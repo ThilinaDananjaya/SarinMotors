@@ -20,7 +20,7 @@ export default class CreateUser extends Component {
   }
 
   onSubmit(e) {
-    e.preventDefault(); 
+    e.preventDefault();
 
     const user = {
       username: this.state.username
@@ -30,8 +30,6 @@ export default class CreateUser extends Component {
 
     axios.post('http://localhost:5000/users/add', user)
     .then(res => console.log(res.data));
-
-    
 
     this.setState({
       username: ''
@@ -43,7 +41,7 @@ export default class CreateUser extends Component {
       <div>
         <h3>Add a Customer</h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group"> 
+          <div className="form-group">
             <label>Customer name: </label>
             <input  type="text"
                 required
