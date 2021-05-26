@@ -14,13 +14,14 @@ export default class CreateExercises extends Component{
         this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    
 
         this.state={
             username: '',
             description:'',
             duration:0,
             date:new Date(),
-            users:[]
+            users:[] 
         }
     }
 
@@ -30,7 +31,7 @@ export default class CreateExercises extends Component{
          if(Response.data.length>0){
              this.setState({
                  users:Response.data.map(user=>user.username),
-                 username:Response.data[0].username
+                 username:Response.data[0].username 
              })
          }
      })
@@ -40,7 +41,7 @@ export default class CreateExercises extends Component{
         this.setState({
             username: e.target.value
         });
-    }
+    } 
     onChangeDescription(e){
         this.setState({
             description: e.target.value
@@ -80,7 +81,7 @@ render() {
     <div>
       <h3>Add a Vehicle Order</h3>
       <form onSubmit={this.onSubmit}>
-        <div className="form-group">
+        <div className="form-group"> 
           <label>Customer Name: </label>
           <select ref="userInput"
               required
@@ -89,7 +90,7 @@ render() {
               onChange={this.onChangeUsername}>
               {
                 this.state.users.map(function(user) {
-                  return <option
+                  return <option 
                     key={user}
                     value={user}>{user}
                     </option>;
@@ -97,7 +98,7 @@ render() {
               }
           </select>
         </div>
-        <div className="form-group">
+        <div className="form-group"> 
           <label>Car model: </label>
           <input  type="text"
               required
@@ -108,8 +109,8 @@ render() {
         </div>
         <div className="form-group">
           <label>Price </label>
-          <input
-              type="text"
+          <input 
+              type="text" 
               className="form-control"
               value={this.state.duration}
               onChange={this.onChangeDuration}
