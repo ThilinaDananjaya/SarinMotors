@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import axios from 'axios';
+import swal from "sweetalert";
 
 export default class CreateUser extends Component{
 
@@ -19,6 +20,8 @@ export default class CreateUser extends Component{
         this.onChangePassword=this.onChangePassword.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
         this.onChangeUsertypeId=this.onChangeUsertypeId.bind(this);
+        this.onChangeEmail=this.onChangeEmail.bind(this);
+        this.onChangeMobile=this.onChangeMobile.bind(this);
 
 
 
@@ -26,6 +29,8 @@ export default class CreateUser extends Component{
             usertypeId:'',
             username:'',
             password : '',
+            email:'',
+            mobile:'',
             usertypes:[]
 
 
@@ -67,6 +72,16 @@ export default class CreateUser extends Component{
             password:e.target.value
         })
     };
+    onChangeEmail(e){
+        this.setState({
+            email:e.target.value
+        })
+    };
+    onChangeMobile(e){
+        this.setState({
+            mobile:e.target.value
+        })
+    };
 
     onSubmit(e){
         e.preventDefault();
@@ -74,7 +89,9 @@ export default class CreateUser extends Component{
         const user = {
             usertypeId:this.state.usertypeId,
             username:this.state.username,
-            password:this.state.password
+            password:this.state.password,
+            email:this.state.email,
+            mobile:this.state.mobile
         }
         console.log(user);
 
@@ -84,16 +101,20 @@ export default class CreateUser extends Component{
         .then(res=>console.log(res.data));
 
         //when click submit button window will go to userslist view
-
+        swal("Add new agent?")
+        .then((value) => {
+          document.location.reload();
+});
     }
 
     render(){
         return(
             <div className="container">
+    
+        
                 <div className="row">
-                <div className="border border-rounded border-primary">
                
-            <h3>Create a User</h3>
+            <h3>Add Employee</h3>
             <form onSubmit={this.onSubmit}>
               <div className="form-group"> 
                 <label>User Type ID : </label>
@@ -130,6 +151,27 @@ export default class CreateUser extends Component{
                     onChange={this.onChangePassword}
                     />
               </div>
+            
+              <div className="form-group"> 
+                <label>Email </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.email}
+                    onChange={this.onChangeEmail}
+                    />
+              </div>
+              
+              <div className="form-group"> 
+                <label>Mobile </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.agentMobile}
+                    onChange={this.onChangeMobile}
+                    />
+              </div>
+              <br></br>
              
       
               <div className="form-group">
@@ -138,7 +180,7 @@ export default class CreateUser extends Component{
             </form>
             </div>
             
-            </div>
+            
 
           </div>
         )

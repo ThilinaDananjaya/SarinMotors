@@ -4,6 +4,9 @@ import AgentList from "./agent-list.component";
 //send http request to backend (connect to backend)
 import axios from 'axios';
 
+//alert
+import swal from 'sweetalert';
+
 export default class CreateAgent extends Component{
 
     constructor(props){
@@ -11,13 +14,15 @@ export default class CreateAgent extends Component{
 
         //hard coding a single user
 
-       
+          
 
 
         //binding this keyword to class
         
         this.onChangeAgentId=this.onChangeAgentId.bind(this);
         this.onChangeAgentName=this.onChangeAgentName.bind(this);
+        this.onChangeEmail=this.onChangeEmail.bind(this);
+        this.onChangeMobile=this.onChangeMobile.bind(this);
 
         this.onSubmit=this.onSubmit.bind(this);
 
@@ -25,13 +30,21 @@ export default class CreateAgent extends Component{
 
         this.state={
             agentId: '',
-            agentName:''
+            agentName:'',
+            email:'',
+            mobile:''
 
 
 
         }
 
         
+    }
+
+    makeAlert(){
+        <div class="alert alert-success">
+        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+      </div>
     }
     
     
@@ -49,6 +62,17 @@ export default class CreateAgent extends Component{
             agentName:e.target.value
         })
     };
+    onChangeEmail(e){
+        this.setState({
+            email:e.target.value
+        })
+    };
+    onChangeMobile(e){
+        this.setState({
+            mobile:e.target.value
+        })
+    };
+
 
    
 
@@ -58,8 +82,9 @@ export default class CreateAgent extends Component{
 
         const agent = {
             agentId:this.state.agentId,
-            agentName:this.state.agentName
-           
+            agentName:this.state.agentName,
+            email:this.state.email,
+            mobile:this.state.mobile
         }
         console.log(agent);
 
@@ -68,11 +93,25 @@ export default class CreateAgent extends Component{
 
         this.setState({
             agentId:'',
-            agentName:''
+            agentName:'',
+            email:'',
+            mobile:''
         })
+        //refresh page and give a alert
+        swal("Add new agent?")
+        .then((value) => {
+          document.location.reload();
+});
+        
+        // document.AgentList.reload()
+        
+    
+        // swal("Done!", "You added a agent!", "success");
 
         
-            window.location.reload(false);
+        //refresh the page 
+      
+        
           
 
         
@@ -82,7 +121,7 @@ export default class CreateAgent extends Component{
         return(
             <div className="container">
                 <div className="row">
-            <div className="col-4  pb-5 pt-5 border rounded border-primary">
+            <div className="col-4 bg-light pb-5 pt-5 border">
                 
             <h3 className="text-primary">Add Agent</h3>
             <form onSubmit={this.onSubmit}>
@@ -105,6 +144,26 @@ export default class CreateAgent extends Component{
                     onChange={this.onChangeAgentName}
                     />
               </div>
+            
+              <div className="form-group"> 
+                <label>Email </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.email}
+                    onChange={this.onChangeEmail}
+                    />
+              </div>
+            
+              <div className="form-group"> 
+                <label>Mobile </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.agentMobile}
+                    onChange={this.onChangeMobile}
+                    />
+              </div>
 
             <br></br>
               
@@ -116,8 +175,8 @@ export default class CreateAgent extends Component{
             </form>
 
             </div>
-
-            <div className="col-8">
+ 
+            <div className="col-8 bg-light">
             
                <AgentList/>
             </div>

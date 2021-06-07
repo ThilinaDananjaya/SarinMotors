@@ -7,6 +7,8 @@ const Shipper =props=> (
     <tr>
         <td>{props.shipper.shipperId}</td>
         <td>{props.shipper.shipperName}</td>
+        <td>{props.shipper.email}</td>
+        <td>{props.shipper.mobile}</td>
         
         <td>
          <a className="btn btn-danger" href="#" onClick={()=>{props.deleteShipper(props.shipper._id) }}> delete</a> 
@@ -31,7 +33,7 @@ export default class ShipperList extends Component {
           this.setState({ shippers: response.data })
         })
         .catch((error) => {
-          console.log(error); 
+          console.log(error);  
         })
     }
     
@@ -40,7 +42,7 @@ export default class ShipperList extends Component {
         .then(response => { console.log(response.data)});
   
       this.setState({
-        shippers: this.state.shippers.filter(el => el._id !== id)
+        shippers: this.state.shippers.filter(el => el._id !== id) 
       })
     }
   shipperList(){
@@ -52,16 +54,18 @@ export default class ShipperList extends Component {
 
 render(){
     return (
-        <div className="container border rounded border-warning pt-5 pb-5">
+        <div className="container pt-5 pb-5">
        <div className="pl-2">
         <h3 className="text-primary">Shipper</h3>
         </div>
         <div>
-        <table className="table table-boarded">
+        <table className="table table-boarded table-striped table-dark">
           <thead className="thead-light">
-            <tr className=" table-primary">
+            <tr className=" ">
               <th>Shipper ID</th>
               <th>Shipper Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
 
               <th>Actions</th>
 

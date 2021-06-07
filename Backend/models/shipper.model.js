@@ -1,28 +1,34 @@
-const mongoose= require("mongoose");
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const ShipperSchema = new Schema({
-
-    shipperId:{
-        type : String,
-        required :true,
-        unique:true,
-        trim:true,
-                                    
+const ShipperSchema = new Schema(
+  {
+    shipperId: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
     },
-    shipperName:{
-        type:String,
-        required:true,
-        unique:true,
-
+    shipperName: {
+      type: String,
+      required: true,
+      unique: true,
     },
-},{
-    timestamps:true, 
-});
+    email: {
+      type: String,
+      required: true,
+    },
+    mobile: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
- 
+const Shipper = mongoose.model("Shipper", ShipperSchema);
 
-const Shipper = mongoose.model('Shipper', ShipperSchema);
-
-module.exports= Shipper;
+module.exports = Shipper;

@@ -8,7 +8,8 @@ const User =props=> (
     <tr>
         <td>{props.user.usertypeId}</td>
         <td>{props.user.username}</td>
-        <td>{props.user.password}</td>
+        <td>{props.user.email}</td>
+        <td>{props.user.mobile}</td>
         <td>
            <Link className="btn btn-warning" to={"/edit/"+props.user.id}>edit</Link> | <a className="btn btn-danger" href="#" onClick={()=>{props.deleteUser(props.user._id) }}> delete</a> 
             
@@ -56,17 +57,19 @@ export default class UsersList extends Component {
 
     render(){
         return (
-          <div className="container pt-5 pb-5 border rounded border-warning pt-5 pb-5">
+          <div className="container pt-5 pb-5 ">
           <div className="">
             <h3>Users</h3>
             </div>
             <div>
-            <table className="table  table-boarded">
+            <table className="table  table-boarded table-striped table-dark">
               <thead className="thead-light">
-                <tr className="table-primary">
+                <tr className="">
                   <th>User type</th>
                   <th>User name</th>
-                  <th>Password</th>
+          
+                  <th>Email</th>
+                  <th>Mobile</th>
                   <th>Actions</th>
 
                 </tr>

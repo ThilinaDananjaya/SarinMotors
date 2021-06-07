@@ -76,7 +76,7 @@ export default class CreateUserType extends Component{
 
 
                 <div className="row">
-                <div className="col-3 pb-5 pt-5 border rounded border-primary"> 
+                <div className="col-3 bg-light pb-5 pt-5 border"> 
             <h3 className="text-primary">Add UserTypes</h3>
             <form onSubmit={this.onSubmit}>
               <div className="form-group"> 
@@ -109,17 +109,17 @@ export default class CreateUserType extends Component{
 
             </div>
 
-            <div className="col-6">
+            <div className="col-6 border bg-light">
                 
                 <UserTypesList/>
             </div>
             </div>
 
             <div className="row mt-5 mb-5">
-                <div className="col-4">
+                <div className="col-4 border bg-light">
             <CreateUser/>
                 </div>
-                <div className="col-8">
+                <div className="col-8 border bg-light">
             <UsersList/>
                 </div>
 

@@ -4,7 +4,7 @@ import axios from 'axios';
 const Customer = props => (
   <tr>
     <td>{props.customer.username}</td>
-    <td>{props.customer.password}</td>
+  
     <td>{props.customer.email}</td>
     <td>{props.customer.mobile}</td>
     <td>{props.customer.dob.substring(0,10)}</td>
@@ -35,7 +35,7 @@ export default class CustomersList extends Component {
   
 
   deleteCustomer(id) {
-    axios.delete('http://localhost:/customers/'+id)
+    axios.delete('http://localhost:5001/customers/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({
@@ -51,14 +51,14 @@ export default class CustomersList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="">
         <h3>Customers List</h3>
-        <table className="table">
+        <table className="table table-striped table-dark table-boarded">
           <thead className="thead-light">
             <tr>
               <th>Customer name</th>
-              <th>Password</th>
-              <th>Price</th>
+            
+              <th>Email</th>
               <th>Mobile</th>
               <th>DOB</th>
               <th>Actions</th>

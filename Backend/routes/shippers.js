@@ -1,35 +1,36 @@
-const router = require('express').Router();
+const router = require("express").Router();
 //require shipper model
-let Shipper = require('../models/shipper.model');
+let Shipper = require("../models/shipper.model");
 
-//first endpoint 
+//first endpoint
 
-router.route('/').get((req, res) => {
+router.route("/").get((req, res) => {
   Shipper.find()
-    .then(shippers => res.json(shippers))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .then((shippers) => res.json(shippers))
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //deleteshipper
 
-
-router.route('/:id').delete((req,res)=>{
+router.route("/:id").delete((req, res) => {
   Shipper.findByIdAndDelete(req.params.id)
-  .then(()=>res.json('Shipper deleted.'))
-  .catch(err=>res.status(400).json('error'+ err));
-})
+    .then(() => res.json("Shipper deleted."))
+    .catch((err) => res.status(400).json("error" + err));
+});
 //second endpoint
 
-router.route('/add').post((req, res) => {
+router.route("/add").post((req, res) => {
   const shipperId = req.body.shipperId;
-  const shipperName=req.body.shipperName;
-  
+  const shipperName = req.body.shipperName;
+  const email = req.body.email;
+  const mobile = req.body.mobile;
 
-  const newShipper = new Shipper({shipperId,shipperName});
+  const newShipper = new Shipper({ shipperId, shipperName, email, mobile });
 
-  newShipper.save()
-    .then(() => res.json('Shipper added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+  newShipper
+    .save()
+    .then(() => res.json("Shipper added!"))
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;
