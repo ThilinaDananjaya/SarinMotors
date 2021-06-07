@@ -1,52 +1,67 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
-const Customer = props => (
+const Customer = (props) => (
   <tr>
     <td>{props.customer.username}</td>
-  
+
     <td>{props.customer.email}</td>
     <td>{props.customer.mobile}</td>
-    <td>{props.customer.dob.substring(0,10)}</td>
+    <td>{props.customer.dob.substring(0, 10)}</td>
     <td>
-       <a className="btn btn-danger" href="#" onClick={() => { props.deleteCustomer(props.customer._id) }}>delete</a> 
+      <a
+        className="btn btn-danger"
+        href="#"
+        onClick={() => {
+          props.deleteCustomer(props.customer._id);
+        }}
+      >
+        delete
+      </a>
     </td>
   </tr>
-)
+);
 
 export default class CustomersList extends Component {
   constructor(props) {
-    super(props); 
+    super(props);
 
-    this.deleteCustomer = this.deleteCustomer.bind(this)
+    this.deleteCustomer = this.deleteCustomer.bind(this);
 
-    this.state = {customers: []};
+    this.state = { customers: [] };
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5001/customers/')
-      .then(response => {
-        this.setState({ customers: response.data })
+    axios
+      .get("http://localhost:5001/customers/")
+      .then((response) => {
+        this.setState({ customers: response.data });
       })
       .catch((error) => {
-        console.log(error); 
-      })
+        console.log(error);
+      });
   }
-  
 
   deleteCustomer(id) {
-    axios.delete('http://localhost:5001/customers/'+id)
-      .then(response => { console.log(response.data)});
+    axios.delete("http://localhost:5001/customers/" + id).then((response) => {
+      console.log(response.data);
+    });
 
     this.setState({
-      customers: this.state.customers.filter(el => el._id !== id)
-    })
+      customers: this.state.customers.filter((el) => el._id !== id),
+    });
   }
 
   customersList() {
-    return this.state.customers.map(currentcustomer => {
-      return <Customer customer={currentcustomer} deleteCustomer={this.deleteCustomer} key={currentcustomer._id}/>;
-    })
+    return this.state.customers.map((currentcustomer) => {
+      return (
+        <Customer
+          customer={currentcustomer}
+          deleteCustomer={this.deleteCustomer}
+          key={currentcustomer._id}
+        />
+      );
+    });
   }
 
   render() {
@@ -57,18 +72,16 @@ export default class CustomersList extends Component {
           <thead className="thead-light">
             <tr>
               <th>Customer name</th>
-            
+
               <th>Email</th>
               <th>Mobile</th>
               <th>DOB</th>
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            { this.customersList() }
-          </tbody>
+          <tbody>{this.customersList()}</tbody>
         </table>
       </div>
-    )
+    );
   }
 }

@@ -47,11 +47,13 @@ class Header extends Component {
                     <span className="fa fa-home fa-lg"></span> Home
                   </NavLink>
                 </NavItem>
+
                 <NavItem>
                   <NavLink className="nav-link" to="/inventory">
                     <span className="fa fa-list fa-lg"></span> Inventory
                   </NavLink>
                 </NavItem>
+
                 <NavItem>
                   <NavLink className="nav-link" to="/aboutus">
                     <span className="fa fa-info fa-lg"></span> About Us
@@ -62,6 +64,12 @@ class Header extends Component {
                   <NavLink className="nav-link" to="/contactus">
                     <span className="fa fa-address-card fa-lg"></span> Contact
                     Us
+                  </NavLink>
+                </NavItem>
+
+                <NavItem>
+                  <NavLink className="nav-link" to="/login">
+                    <span className="fa fa-address-card fa-lg"></span> Log In
                   </NavLink>
                 </NavItem>
               </Nav>

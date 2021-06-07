@@ -1,83 +1,91 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
+const Shipper = (props) => (
+  <tr>
+    <td>{props.shipper.shipperId}</td>
+    <td>{props.shipper.shipperName}</td>
+    <td>{props.shipper.email}</td>
+    <td>{props.shipper.mobile}</td>
 
-const Shipper =props=> (
-
-    <tr>
-        <td>{props.shipper.shipperId}</td>
-        <td>{props.shipper.shipperName}</td>
-        <td>{props.shipper.email}</td>
-        <td>{props.shipper.mobile}</td>
-        
-        <td>
-         <a className="btn btn-danger" href="#" onClick={()=>{props.deleteShipper(props.shipper._id) }}> delete</a> 
-            
-        </td>
-    </tr>
-)
-
+    <td>
+      <a
+        className="btn btn-danger"
+        href="#"
+        onClick={() => {
+          props.deleteShipper(props.shipper._id);
+        }}
+      >
+        {" "}
+        delete
+      </a>
+    </td>
+  </tr>
+);
 
 export default class ShipperList extends Component {
-    constructor(props) {
-      super(props); 
-  
-      this.deleteShipper = this.deleteShipper.bind(this)
-  
-      this.state = {shippers: []};
-    }
-    
-    componentDidMount() {
-      axios.get('http://localhost:5001/shippers/')
-        .then(response => {
-          this.setState({ shippers: response.data })
-        })
-        .catch((error) => {
-          console.log(error);  
-        })
-    }
-    
-    deleteShipper(id) {
-      axios.delete('http://localhost:5001/shippers/'+id)
-        .then(response => { console.log(response.data)});
-  
-      this.setState({
-        shippers: this.state.shippers.filter(el => el._id !== id) 
-      })
-    }
-  shipperList(){
-      return this.state.shippers.map(currentshipper=>{
-          return <Shipper shipper={currentshipper} deleteShipper={this.deleteShipper} key={currentshipper._id}/>
+  constructor(props) {
+    super(props);
 
-      })
-  } 
+    this.deleteShipper = this.deleteShipper.bind(this);
 
-render(){
+    this.state = { shippers: [] };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:5001/shippers/")
+      .then((response) => {
+        this.setState({ shippers: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  deleteShipper(id) {
+    axios.delete("http://localhost:5001/shippers/" + id).then((response) => {
+      console.log(response.data);
+    });
+
+    this.setState({
+      shippers: this.state.shippers.filter((el) => el._id !== id),
+    });
+  }
+  shipperList() {
+    return this.state.shippers.map((currentshipper) => {
+      return (
+        <Shipper
+          shipper={currentshipper}
+          deleteShipper={this.deleteShipper}
+          key={currentshipper._id}
+        />
+      );
+    });
+  }
+
+  render() {
     return (
-        <div className="container pt-5 pb-5">
-       <div className="pl-2">
-        <h3 className="text-primary">Shipper</h3>
+      <div className="container pt-5 pb-5">
+        <div className="pl-2">
+          <h3 className="text-primary">Shipper</h3>
         </div>
         <div>
-        <table className="table table-boarded table-striped table-dark">
-          <thead className="thead-light">
-            <tr className=" ">
-              <th>Shipper ID</th>
-              <th>Shipper Name</th>
-              <th>Email</th>
-              <th>Mobile</th>
+          <table className="table table-boarded table-striped table-dark">
+            <thead className="thead-light">
+              <tr className=" ">
+                <th>Shipper ID</th>
+                <th>Shipper Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
 
-              <th>Actions</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            { this.shipperList() } 
-          </tbody>
-        </table>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>{this.shipperList()}</tbody>
+          </table>
+        </div>
       </div>
-      </div>
-    
-    )
-}
+    );
+  }
 }

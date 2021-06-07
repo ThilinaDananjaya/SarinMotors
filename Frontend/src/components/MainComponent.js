@@ -11,6 +11,8 @@ import Footer from "./FooterComponent";
 import Home from "./HomeComponent";
 import Contact from "./ContactComponent";
 import About from "./AboutComponent";
+import Signup from "./SignUpComponent";
+import Login from "./LogInComponent";
 
 import { Switch, Route, Redirect } from "react-router-dom";
 
@@ -46,12 +48,13 @@ class Main extends Component {
             path="/inventory"
             component={() => <Inventory cars={this.state.cars} />}
           />
-          <Route exact path="/contactus" component={Contact} />
           <Route
             exact
             path="/aboutus"
             component={() => <About leaders={this.state.leaders} />}
           />
+          <Route exact path="/contactus" component={Contact} />
+          <Route exact path="/login" component={Login} />
           <Redirect to="/home" />
         </Switch>
 
