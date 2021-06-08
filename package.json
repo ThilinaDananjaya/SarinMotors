@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "backend": "cd Backend && nodemon server.js",
+    "dashboard": "cd Dashboard && yarn start",
+    "frontend": "cd Frontend && yarn start",
+    "start": "concurrently --kill-others -n 'backend,dashboard,frontend' -c 'green,yellow,blue' \"npm run backend\" \"npm run dashboard\" \"npm run frontend\""
+  },
   "dependencies": {
+    "concurrently": "^6.2.0",
     "reactstrap": "^8.9.0"
   }
 }
