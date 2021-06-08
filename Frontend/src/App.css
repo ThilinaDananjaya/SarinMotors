@@ -11,14 +11,17 @@
 }
 
 .footer {
-  background-color: #f1b24a;
+  background-color: #aaaaa9;
   margin: 0px auto;
   padding: 20px 0px 20px 0px;
 }
 .jumbotron {
-  padding: 70px 30px 70px 30px;
-  margin: 0px auto;
-  background: #4d774e;
+  /* padding: 70px 30px 70px 30px; */
+  max-width: 100%;
+  max-height: auto;
+  background-image: url(./images/MaskGroup1.png);
+  background-repeat: no-repeat;
+  /* background: rgb(0, 59, 94); */
   color: floralwhite;
 }
 
@@ -29,5 +32,22 @@ address {
 }
 
 .navbar-dark {
-  background-color: #164a41;
+  background-color: #1f1f1f;
+}
+
+.col-12 {
+  color: rgb(129, 129, 129);
+  /* font-size: 150%; */
+}
+
+.des {
+  color: rgb(136, 225, 255);
+  /* font-size: 150%; */
+  font-style: bold;
+}
+
+.slider {
+  margin: auto;
+  height: 500px;
+  width: 600px;
 }

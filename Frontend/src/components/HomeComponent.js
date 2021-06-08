@@ -25,7 +25,7 @@ function RenderCard({ item }) {
 
 function Home(props) {
   return (
-    <div className="container .bg-secondary">
+    <div className="slider .bg-secondary">
       {/* adding a slider */}
 
       <div
@@ -46,25 +46,25 @@ function Home(props) {
           <div class="carousel-item active">
             <img
               class="d-block w-100"
-              src="\assets\cars\bmw5.jpg"
+              src="\assets\cars\Honda-CR-V-TPMS.png"
               alt="First slide"
             ></img>
             <div class="carousel-caption d-none d-md-block">
-              <h5>bmw car</h5>
-              <p>adasdadad</p>
+              {/* <h5>Name</h5> */}
+              {/* <p>Description</p> */}
             </div>
           </div>
           <div class="carousel-item">
             <img
               class="d-block w-100"
-              src="\assets\cars\chr.jpg"
+              src="\assets\cars\YTB800-2-902x675.jpg"
               alt="Second slide"
             ></img>
           </div>
           <div class="carousel-item">
             <img
               class="d-block w-100"
-              src="\assets\cars\landcruiser.png"
+              src="\assets\cars\71eXBBYjImL._AC_SY450_.jpg"
               alt="Third slide"
             ></img>
           </div>

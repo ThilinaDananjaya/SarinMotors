@@ -34,7 +34,7 @@ class Header extends Component {
             <NavbarToggler onClick={this.toggleNav} />
             <NavbarBrand className="mr-auto" href="/">
               <img
-                src="assets/images/logo.png"
+                src="assets/images/logo.jpg"
                 height="30"
                 width="41"
                 alt="Ristorante Con Fusion"
@@ -69,7 +69,7 @@ class Header extends Component {
 
                 <NavItem>
                   <NavLink className="nav-link" to="/login">
-                    <span className="fa fa-address-card fa-lg"></span> Log In
+                    <span className="fa fa-login"></span> Log In
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -80,17 +80,26 @@ class Header extends Component {
           <div className="container mb-5">
             <div className="row row-header">
               <div className="col-12 col-sm-6">
-                <h1>CS CAR SALES</h1>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus a neque lacinia, volutpat nunc sed, vehicula ipsum.
-                  Phasellus gravida euismod ert. felis commodo scelerisque sit
-                  amet ut mi. Proin ultricies interdum felis, sed varius ex
-                  interdum in. Quisque vel erat in justo laoreet luctus. Duis
-                  neque justo, fermentum sed justo non, viverra egestas augue.
-                  Sed in mi bibendum, elementum tellus eu, consequat ipsum.
-                </p>
+                <br />
+                <br />
+                <h1>SARIN MOTORS</h1>
+                <div className="des">
+                  <p>
+                    <br />
+                    &nbsp;&nbsp;GET THE BRAND NEW VEHICLES AND
+                    <br />
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MACHINES AT FAIR PRICES<br /><br /><br />
+                  </p>
+                </div>
               </div>
+              {/* <div className="col-12 col-sm-6">
+                <img
+                  className="im-fluid"
+                  src="\assets\carsaleimg\Honda-CR-V-TPMS.png"
+                  alt=""
+                />
+              </div> */}
               <div className="col-12 col-sm-6">
                 <img
                   className="img-fluid"

@@ -64,12 +64,12 @@ function About(props) {
             fermentum sed justo non, viverra egestas augue. Sed in mi bibendum,
             elementum tellus eu, consequat ipsum.
           </p>
-          <p>
+          {/* <p>
             The restaurant traces its humble beginnings to{" "}
             <em>The Frying Pan</em>, a successful chain started by our CEO, Mr.
             Peter Pan, that featured for the first time the world's best
             cuisines in a pan.
-          </p>
+          </p> */}
         </div>
         <div className="col-12 col-md-5">
           <Card>
@@ -81,11 +81,11 @@ function About(props) {
                 <dt className="col-6">Started</dt>
                 <dd className="col-6">3 Feb. 2013</dd>
                 <dt className="col-6">Major Stake Holder</dt>
-                <dd className="col-6">HK Fine Foods Inc.</dd>
+                <dd className="col-6">A</dd>
                 <dt className="col-6">Last Year's Turnover</dt>
-                <dd className="col-6">$1,250,375</dd>
+                <dd className="col-6">$1,000</dd>
                 <dt className="col-6">Employees</dt>
-                <dd className="col-6">40</dd>
+                <dd className="col-6">5</dd>
               </dl>
             </CardBody>
           </Card>
@@ -94,7 +94,7 @@ function About(props) {
           <Card>
             <CardBody className="bg-faded">
               <blockquote className="blockquote">
-                <p className="mb-0">
+                {/* <p className="mb-0">
                   You better cut the pizza in four pieces because I'm not hungry
                   enough to eat six.
                 </p>
@@ -104,7 +104,7 @@ function About(props) {
                     The Wit and Wisdom of Yogi Berra, P. Pepe, Diversion Books,
                     2014
                   </cite>
-                </footer>
+                </footer> */}
               </blockquote>
             </CardBody>
           </Card>

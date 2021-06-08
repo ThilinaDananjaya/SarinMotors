@@ -52,18 +52,19 @@ class Contact extends Component {
             <div className="col-12">
               <h3>Business Hours</h3>
               <br />
-              Mon: 9:00am - 6:00pm <br />
-              Tue: 9:00am - 6:00pm
+              Mon : 9:00am - 6:00pm
               <br />
-              Wed: 9:00am - 6:00pm
+              Tue : &nbsp;9:00am - 6:00pm
               <br />
-              Thu: 9:00am - 6:00pm
+              Wed : 9:00am - 6:00pm
               <br />
-              Fri: 9:00am - 6:00pm
+              Thu : &nbsp;9:00am - 6:00pm
               <br />
-              Sat: 9:00am - 6:00pm
+              Fri : &nbsp;&nbsp;&nbsp;9:00am - 6:00pm
               <br />
-              Sun: Closed
+              Sat : &nbsp;&nbsp;9:00am - 6:00pm
+              <br />
+              Sun : &nbsp;Closed
             </div>
           </div>
         </div>
@@ -74,18 +75,18 @@ class Contact extends Component {
           <div className="col-12 col-sm-4 offset-sm-1">
             <h5>Our Address</h5>
             <address>
-              C.S Car Sales
+              155/A, Yakkala Road
               <br />
-              174 Kandy Rd, Kadawatha
+              Gampaha
               <br />
-              11850
+              Sri Lanka
               <br />
-              <i className="fa fa-phone"></i>: 033 2256411
+              <i className="fa fa-phone"></i>: &nbsp;+94 77 767 3638
               <br />
-              <i className="fa fa-fax"></i>: +0332256411
+              <i className="fa fa-fax"></i>: +94 33 222 3596
               <br />
-              <i className="fa fa-envelope"></i>:{" "}
-              <a href="mailto:cscarsales.lk">cscarsales.lk</a>
+              <i className="fa fa-envelope"></i>:
+              <a href="mailto:sarinmotors@gmail.com"> sarinmotors@gmail.com</a>
             </address>
           </div>
           <div className="col-12 col-sm-6 offset-sm-1">
@@ -96,7 +97,7 @@ class Contact extends Component {
               <a
                 role="button"
                 className="btn btn-primary"
-                href="tel:+85212345678"
+                href="tel:+94777673638"
               >
                 <i className="fa fa-phone"></i> Call
               </a>
@@ -105,9 +106,8 @@ class Contact extends Component {
               </a>
               <a
                 role="button"
-                c
-                lassName="btn btn-success"
-                href="mailto:confusion@food.net"
+                className="btn btn-success"
+                href="mailto:sarinmotors@gmail.com"
               >
                 <i className="fa fa-envelope-o"></i> Email
               </a>
