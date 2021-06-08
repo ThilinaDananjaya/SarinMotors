@@ -32,7 +32,7 @@ const CustomClearanceRouter = require("./routes/customclearance");
 // const OrderReceiveRouter=require('./routes/orderreceives');
 const VehicleStockRouter = require("./routes/stock");
 const signupRouter = require("./routes/signup");
-const loginRouter = require("./routes/login");
+// const loginRouter = require("./routes/login");
 
 //using routes
 
@@ -45,7 +45,7 @@ app.use("/orders", orderRouter);
 app.use("/customclearances", CustomClearanceRouter);
 app.use("/stocks", VehicleStockRouter);
 app.use("/signup", signupRouter);
-app.use("/login", loginRouter);
+// app.use("/login", loginRouter);
 
 app.listen(port, () => {
   console.log(`Server is start at server ${port}`);
