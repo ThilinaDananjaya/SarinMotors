@@ -5,7 +5,7 @@
     "backend": "cd Backend && yarn start",
     "dashboard": "cd Dashboard && yarn start",
     "frontend": "cd Frontend && yarn start",
-    "start": "concurrently --kill-others -n 'backend,dashboard,frontend' -c 'green,yellow,blue' \"yarn run backend\" \"yarn run dashboard\" \"yarn run frontend\""
+    "start": "concurrently --kill-others -n 'backend,dashboard,frontend' -c 'green,blue,yellow' \"yarn run backend\" \"yarn run dashboard\" \"yarn run frontend\""
   },
   "dependencies": {
     "concurrently": "^6.2.0",
