@@ -1,6 +1,8 @@
 {
+  "author": "TD",
+  "license": "ISC",
   "scripts": {
-    "backend": "cd Backend && nodemon server.js",
+    "backend": "cd Backend && yarn start",
     "dashboard": "cd Dashboard && yarn start",
     "frontend": "cd Frontend && yarn start",
     "start": "concurrently --kill-others -n 'backend,dashboard,frontend' -c 'green,yellow,blue' \"yarn run backend\" \"yarn run dashboard\" \"yarn run frontend\""
