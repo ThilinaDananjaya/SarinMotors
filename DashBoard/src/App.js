@@ -1,46 +1,42 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-// importing components
-import Navbar from "./Components/navbar.component";
-import UserList from "./Components/user-list.component";
-import EditUser from "./Components/edit-user.component";
-import CreateUser from "./Components/create-user.component";
-import CreateUserType from "./Components/create-usertype.component";
-import UserTypesList from "./Components/usertype-list.component";
-import CreateAgent from "./Components/create-agent.component";
-import CreateShipper from "./Components/create-shipper.component";
-import CreateCustomers from "./Components/create.customer.component";
-import CreateOrders from "./Components/create-order.component";
-import CreateCustomClearance from "./Components/create-customclearance.component";
-import AddStock from "./Components/addStock-component";
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer.component";
+import AgentCard from "./Components/Agents/agent-view.component";
+import ShipperCard from "./Components/Shippers/shipper-view.component";
+import VehicleCard from "./Components/vehicles/vehicle-view.component";
+import AgentSingle from "./Components/Agents/agent";
+import CreateTest from "./Components/test.component";
+import OrderCard from "./Components/Orders/orderview.component";
+import CustomerCard from "./Components/Customers/customer-view.component";
+import UserCard from "./Components/User/user-view.component";
+import AuctionSheet from "./Components/Orders/order";
 
 function App() {
   return (
-    <Router>
-      <div className="container bg-light">
+    <div>
+      <Router>
         <Navbar />
-        <br />
-
-        <Route path="/" exact component={UserList} />
-        <Route path="/edit/:id" exact component={EditUser} />
-        <Route path="/create" exact component={CreateUser} />
-        <Route path="/usertypes" exact component={CreateUserType} />
-        <Route path="/createusertype" exact component={UserTypesList} />
-        <Route path="/agents" exact component={CreateAgent} />
-        <Route path="/shippers" exact component={CreateShipper} />
-        <Route path="/customers" exact component={CreateCustomers} />
-        <Route path="/orders" exact component={CreateOrders} />
+        <Route path="/agents" exact component={AgentCard} />
         <Route
-          path="/customclearances"
-          exact
-          component={CreateCustomClearance}
+          path="/agent/:id"
+          render={(props) => <AgentSingle {...props} />}
         />
-        <Route path="/stocks" exact component={AddStock} />
-      </div>
-    </Router>
+        <Route path="/shippers" exact component={ShipperCard} />
+        <Route path="/vehicles" exact component={VehicleCard} />
+        <Route path="/orders" exact component={OrderCard} />
+        <Route
+          path="/order/:id"
+          render={(props) => <AuctionSheet {...props} />}
+        />
+        <Route path="/tests" exact component={CreateTest} />
+        <Route path="/customers" exact component={CustomerCard} />
+        <Route path="/users" exact component={UserCard} />
+
+        <Footer />
+      </Router>
+    </div>
   );
 }
 
