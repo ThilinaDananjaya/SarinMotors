@@ -13,7 +13,11 @@ app.use(express.json());
 //connect mongodb atlas using .env file
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
 
 const connection = mongoose.connection;
 connection.once("open", () => {
