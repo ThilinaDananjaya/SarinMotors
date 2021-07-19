@@ -58,6 +58,7 @@ function Home(props) {
             <img
               class="d-block w-100"
               src="\assets\cars\YTB800-2-902x675.jpg"
+              height="400"
               alt="Second slide"
             ></img>
           </div>
@@ -65,6 +66,7 @@ function Home(props) {
             <img
               class="d-block w-100"
               src="\assets\cars\71eXBBYjImL._AC_SY450_.jpg"
+              height="350"
               alt="Third slide"
             ></img>
           </div>

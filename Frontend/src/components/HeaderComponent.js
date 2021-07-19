@@ -35,9 +35,9 @@ class Header extends Component {
             <NavbarBrand className="mr-auto" href="/">
               <img
                 src="assets/images/logo.jpg"
-                height="30"
-                width="41"
-                alt="Ristorante Con Fusion"
+                height="35"
+                width=""
+                alt="Logo"
               />
             </NavbarBrand>
             <Collapse isOpen={this.state.isNavOpen} navbar>
@@ -68,8 +68,13 @@ class Header extends Component {
                 </NavItem>
 
                 <NavItem>
-                  <NavLink className="nav-link" to="/login">
-                    <span className="fa fa-address-card fa-lg"></span> Sign In
+                  <NavLink
+                    className="nav-link"
+                    to={{ pathname: "//localhost/chatapp" }}
+                    target="_blank"
+                  >
+                    {/* <NavLink className="nav-link"  to="/login"> */}
+                    <span className="fa fa-comments fa-lg"></span> Help
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -80,7 +85,13 @@ class Header extends Component {
           <div className="container mb-5">
             <div className="row row-header">
               <div className="col-12 col-sm-6">
-                <br />
+              <img
+                src="assets/images/logo2.jpg"
+                height="200"
+                width="400"
+                alt="Logo"
+              />
+                {/* <br />
                 <br />
                 <h1>SARIN MOTORS</h1>
                 <div className="des">
@@ -89,9 +100,12 @@ class Header extends Component {
                     &nbsp;&nbsp;GET THE BRAND NEW VEHICLES AND
                     <br />
                     <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MACHINES AT FAIR PRICES<br /><br /><br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MACHINES AT FAIR PRICES
+                    <br />
+                    <br />
+                    <br />
                   </p>
-                </div>
+                </div> */}
               </div>
               {/* <div className="col-12 col-sm-6">
                 <img
