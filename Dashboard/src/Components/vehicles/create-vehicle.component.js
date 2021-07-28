@@ -46,7 +46,7 @@ const CreateVehicle = () => {
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Agent Saved",
+      title: "Vehicle Saved",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -78,7 +78,7 @@ const CreateVehicle = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>company :</label>
+        <label>Company :</label>
         <select
           required
           className="form-control"
@@ -116,7 +116,7 @@ const CreateVehicle = () => {
         />
       </div>
       <div className="form-group mb-3">
-        <label>capacity</label>
+        <label>Capacity</label>
         <input
           type="text"
           className="form-control"
@@ -134,6 +134,7 @@ const CreateVehicle = () => {
           onChange={(e) => setBodyStyle(e.target.value)}
         >
           <option>SEDAN</option>
+          <option>SUV</option>
           <option>COUPE</option>
           <option>HATCHBACK</option>
           <option>CONVERTIBLE</option>

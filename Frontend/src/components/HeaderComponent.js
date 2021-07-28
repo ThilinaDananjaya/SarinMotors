@@ -49,8 +49,14 @@ class Header extends Component {
                 </NavItem>
 
                 <NavItem>
-                  <NavLink className="nav-link" to="/inventory">
-                    <span className="fa fa-list fa-lg"></span> Inventory
+                  <NavLink className="nav-link" to="/vehicles">
+                    <span className="fa fa-car fa-lg"></span> Vehicles
+                  </NavLink>
+                </NavItem>
+
+                <NavItem>
+                  <NavLink className="nav-link" to="/machines">
+                    <span className="fa fa-list fa-lg"></span> Machines
                   </NavLink>
                 </NavItem>
 
@@ -71,7 +77,7 @@ class Header extends Component {
                   <NavLink
                     className="nav-link"
                     to={{ pathname: "//localhost/chatapp" }}
-                    target="_blank"
+                    target="_parent"
                   >
                     {/* <NavLink className="nav-link"  to="/login"> */}
                     <span className="fa fa-comments fa-lg"></span> Help

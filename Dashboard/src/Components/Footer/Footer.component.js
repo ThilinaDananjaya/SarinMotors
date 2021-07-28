@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(3, 2),
     marginTop: "auto",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[500]
-        : theme.palette.grey[800],
+    backgroundColor: "#050f2c",
+    // theme.palette.type === "light"
+    //   ? theme.palette.grey[500]
+    //   : theme.palette.grey[800],
   },
 }));
 
@@ -34,16 +34,22 @@ export default function Footer() {
       <CssBaseline />
 
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
+        <Typography
+          variant="h4"
+          align="center"
+          gutterBottom
+          style={{ color: "#2DDDff" }}
+        >
+          SARIN MOTORS
         </Typography>
         <Typography
           variant="subtitle1"
           align="center"
           color="textSecondary"
           component="p"
+          style={{ color: "#2DDDff" }}
         >
-          Something here to give the footer a purpose!
+          RIDE YOUR DREAM
         </Typography>
       </footer>
     </div>

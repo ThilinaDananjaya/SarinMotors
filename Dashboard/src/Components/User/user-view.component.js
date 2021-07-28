@@ -95,7 +95,10 @@ export default function UserCard() {
     <React.Fragment>
       <CssBaseline />
 
-      <div className={classes.heroContent}>
+      <div
+        className={classes.heroContent}
+        style={{ backgroundColor: "#050f2c" }}
+      >
         <Container maxWidth="sm">
           <Typography
             component="h1"
@@ -103,16 +106,9 @@ export default function UserCard() {
             align="center"
             color="textPrimary"
             gutterBottom
+            style={{ color: "#2DDDff" }}
           >
             Employees
-          </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            you can add, view, delete Employees from here.
           </Typography>
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
@@ -162,7 +158,7 @@ export default function UserCard() {
         <Grid container spacing={4}>
           {!users.length ? (
             <div className={classes.root}>
-              <LinearProgress color="secondary" />
+              <LinearProgress color="primary" />
             </div>
           ) : (
             users.map((user, key) => (
@@ -191,7 +187,7 @@ export default function UserCard() {
                   </CardContent>
                   <CardActions>
                     <Link
-                      to={`/update/${user._id}`}
+                      to={`/user/update/${user._id}`}
                       className="btn btn-primary"
                     >
                       Update

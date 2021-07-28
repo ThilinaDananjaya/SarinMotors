@@ -22,7 +22,9 @@ function Footer(props) {
                 <Link to="/contactus">Contact</Link>
               </li>
               <li>
-                <Link to="/login">Log In</Link>
+                <Link to={{ pathname: "//localhost/chatapp" }} target="_parent">
+                  Help
+                </Link>
               </li>
             </ul>
           </div>
@@ -54,28 +56,36 @@ function Footer(props) {
               <a
                 className="btn btn-social-icon btn-facebook"
                 href="http://www.facebook.com/profile.php?id="
+                style={{ marginLeft: "5px" }}
               >
                 <i className="fa fa-facebook"></i>
               </a>
               <a
                 className="btn btn-social-icon btn-linkedin"
                 href="http://www.linkedin.com/in/"
+                style={{ marginLeft: "5px" }}
               >
                 <i className="fa fa-linkedin"></i>
               </a>
               <a
                 className="btn btn-social-icon btn-twitter"
                 href="http://twitter.com/"
+                style={{ marginLeft: "5px" }}
               >
                 <i className="fa fa-twitter"></i>
               </a>
               <a
                 className="btn btn-social-icon btn-google"
                 href="http://youtube.com/"
+                style={{ marginLeft: "5px" }}
               >
                 <i className="fa fa-youtube"></i>
               </a>
-              <a className="btn btn-social-icon" href="mailto:">
+              <a
+                className="btn btn-social-icon"
+                href="mailto:sarinmotors@gmail.com"
+                style={{ marginLeft: "5px" }}
+              >
                 <i className="fa fa-envelope-o"></i>
               </a>
             </div>

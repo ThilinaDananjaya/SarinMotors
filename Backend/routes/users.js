@@ -2,6 +2,21 @@ const router = require("express").Router();
 //require model that created early
 let User = require("../models/user.model");
 
+//image
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    //  callback(null,'./uploads/')
+    callback(null, "./../Dashboard/public/users/");
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
 //first end point -GET
 
 router.route("/").get((req, res) => {
@@ -12,19 +27,41 @@ router.route("/").get((req, res) => {
 
 //second end point - POST
 
-router.route("/add").post((req, res) => {
-  const usertypeId = req.body.usertypeId;
+router.route("/add").post(upload.single("employeeImage"), (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
   const mobile = req.body.mobile;
+  const address = req.body.address;
+  const homePhone = req.body.homePhone;
+  const marriedState = req.body.marriedState;
+  const dob = Date.parse(req.body.dob);
+  const startDate = Date.parse(req.body.startDate);
+  const empType = req.body.empType;
+  const gender = req.body.gender;
+  const bank = req.body.bank;
+  const accountNo = req.body.accountNo;
+  const position = req.body.position;
+  const qualification = req.body.qualification;
+  const employeeImage = req.file.originalname;
 
   const newUser = new User({
-    usertypeId,
     username,
     password,
     email,
     mobile,
+    address,
+    homePhone,
+    marriedState,
+    dob,
+    startDate,
+    empType,
+    gender,
+    bank,
+    accountNo,
+    position,
+    qualification,
+    employeeImage,
   });
 
   newUser
@@ -45,7 +82,7 @@ router.route("/:id").delete((req, res) => {
     .catch((err) => res.status(400).json("error" + err));
 });
 
-router.route("/update/:id").post((req, res) => {
+router.put("/update/:id", upload.single("userImage"), (req, res) => {
   User.findById(req.params.id)
     .then((user) => {
       user.usertypeId = req.body.usertypeId;

@@ -9,6 +9,10 @@ import {
   Input,
   Col,
 } from "reactstrap";
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+
+// const nodemailer = require("nodemailer");
+// const hbs = require("nodemailer-handlebars");
 
 class Contact extends Component {
   constructor(props) {
@@ -42,6 +46,59 @@ class Contact extends Component {
     console.log("Current State is: " + JSON.stringify(this.state));
     alert("Current State is: " + JSON.stringify(this.state));
     event.preventDefault();
+
+    // //mail step1
+    // let transporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   secure: false,
+
+    //   auth: {
+    //     user: "cloudsensorplatform@gmail.com",
+    //     pass: "alertmanagement",
+    //   },
+    //   tls: {
+    //     rejectUnauthorized: false,
+    //   },
+    // });
+    // //mail step 2
+
+    // transporter.use(
+    //   "compile",
+    //   hbs({
+    //     viewEngine: {
+    //       extname: ".handlebars",
+    //       layoutsDir: "./views/",
+    //       defaultLayout: "index",
+    //     },
+    //     viewPath: "./views/",
+    //   })
+    // );
+
+    // let mailOptions = {
+    //   from: "cloudsensorplatform@gmail.com",
+    //   to: this.state.email,
+    //   subject: "Customer Feedback",
+    //   // text: "Welcome!",
+    //   template: "index",
+    //   context: {
+    //     firstname: this.state.firstname,
+    //     lastname: this.state.lastname,
+    //     telnum: this.state.telnum,
+    //     email: this.state.email,
+    //     agree: this.state.agree,
+    //     contactType: this.state.contactType,
+    //     message: this.state.message,
+    //   },
+    // };
+
+    // //step 3
+    // transporter.sendMail(mailOptions, (err, data) => {
+    //   if (err) {
+    //     console.log("Error occurs", err);
+    //   } else {
+    //     console.log("Email Sent");
+    //   }
+    // });
   }
 
   render() {
@@ -53,18 +110,20 @@ class Contact extends Component {
               <h3>Business Hours</h3>
               <br />
               Mon : 9:00am - 6:00pm
+              {/* Mon - Sat : 9:00am - 6:00pm */}
               <br />
-              Tue : &nbsp;9:00am - 6:00pm
+              Tue &nbsp;: 9:00am - 6:00pm
               <br />
               Wed : 9:00am - 6:00pm
               <br />
-              Thu : &nbsp;9:00am - 6:00pm
+              Thu &nbsp;: 9:00am - 6:00pm
               <br />
-              Fri : &nbsp;&nbsp;&nbsp;9:00am - 6:00pm
+              Fri &nbsp;&nbsp;&nbsp;: 9:00am - 6:00pm
               <br />
-              Sat : &nbsp;&nbsp;9:00am - 6:00pm
+              Sat &nbsp;&nbsp;: 9:00am - 6:00pm
               <br />
-              Sun : &nbsp;Closed
+              Sun &nbsp;: Closed
+              {/* Sun &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Closed */}
             </div>
           </div>
         </div>
@@ -90,7 +149,29 @@ class Contact extends Component {
             </address>
           </div>
           <div className="col-12 col-sm-6 offset-sm-1">
-            <h5>Map of our Location</h5>
+            <a
+              href="https://www.google.com/maps/place/15+Yakkala+Rd,+Gampaha/@7.0925488,79.9978777,16.33z/data=!4m5!3m4!1s0x3ae2fb8cd7fb4ca5:0x6c9a3356848be7e4!8m2!3d7.0930667!4d80.0004011"
+              target="_blank"
+            >
+              <h5>Map of our Location</h5>
+            </a>
+            <Map
+              google={this.props.google}
+              initialCenter={{
+                lat: 7.093444734076279,
+                lng: 80.00039875458239,
+              }}
+              zoom={14}
+              style={{ width: "500px", height: "300px", marginTop: "-5px" }}
+            >
+              <Marker onClick={this.onMarkerClick} name={"Current location"} />
+
+              <InfoWindow onClose={this.onInfoWindowClose}>
+                <div>
+                  <h1>{this.state.selectedPlace}</h1>
+                </div>
+              </InfoWindow>
+            </Map>
           </div>
           <div className="col-12 col-sm-11 offset-sm-1">
             <div className="btn-group" role="group">
@@ -101,7 +182,11 @@ class Contact extends Component {
               >
                 <i className="fa fa-phone"></i> Call
               </a>
-              <a role="button" className="btn btn-info">
+              <a
+                role="button"
+                className="btn btn-info"
+                style={{ color: "#fff" }}
+              >
                 <i className="fa fa-skype"></i> Skype
               </a>
               <a
@@ -115,7 +200,7 @@ class Contact extends Component {
           </div>
         </div>
 
-        <div className="row row-content">
+        <div className="row row-content" style={{ marginTop: "50px" }}>
           <div className="col-12">
             <h3>Send us your Feedback</h3>
           </div>
@@ -157,7 +242,7 @@ class Contact extends Component {
                 </Label>
                 <Col md={10}>
                   <Input
-                    type="tel"
+                    type="text"
                     id="telnum"
                     name="telnum"
                     placeholder="Tel. number"
@@ -191,7 +276,7 @@ class Contact extends Component {
                         checked={this.state.agree}
                         onChange={this.handleInputChange}
                       />{" "}
-                      <strong>May we contact you?</strong>
+                      <strong>Contact Me</strong>
                     </Label>
                   </FormGroup>
                 </Col>
@@ -202,7 +287,7 @@ class Contact extends Component {
                     value={this.state.contactType}
                     onChange={this.handleInputChange}
                   >
-                    <option>Tel.</option>
+                    <option>Phone</option>
                     <option>Email</option>
                   </Input>
                 </Col>
@@ -237,4 +322,7 @@ class Contact extends Component {
   }
 }
 
-export default Contact;
+// export default Contact;
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyBdm1ULA65YOie4-8-MQ4aRBNpo5ny-zd0",
+})(Contact);

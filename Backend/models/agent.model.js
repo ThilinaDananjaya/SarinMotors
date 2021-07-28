@@ -15,10 +15,19 @@ const AgentSchema = new Schema(
       required: true,
       unique: true,
     },
+    company: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
     },
+
+    agentImage: {
+      type: String,
+    },
+
     mobile: {
       type: String,
       required: true,

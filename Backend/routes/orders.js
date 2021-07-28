@@ -1,5 +1,21 @@
 const router = require("express").Router();
 let Order = require("../models/order.model");
+const nodemailer = require("nodemailer");
+
+//image
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    //  callback(null,'./uploads/')
+    callback(null, "./../Dashboard/public/orders/");
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
 
 router.route("/").get((req, res) => {
   Order.find()
@@ -7,7 +23,7 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/add").post((req, res) => {
+router.route("/add").post(upload.single("auctionSheet"), (req, res) => {
   const orderId = req.body.orderId;
   const date = Date.parse(req.body.date);
   const payment = Number(req.body.payment);
@@ -15,6 +31,15 @@ router.route("/add").post((req, res) => {
   const shipper = req.body.shipper;
   const user = req.body.user;
   const customer = req.body.customer;
+  const insuranceCost = Number(req.body.insuranceCost);
+  const shippingCost = Number(req.body.shippingCost);
+  const agentPayment = Number(req.body.agentPayment);
+  const auctionSheetid = req.body.autionSheetid;
+  const auctionSheet = req.file.originalname;
+  const invoiceNumber = req.body.invoiceNumber;
+  const bank = req.body.bank;
+  const bankEmail = req.body.bankEmail;
+  const locNum = req.body.locNum;
 
   const newOrder = new Order({
     orderId,
@@ -24,18 +49,53 @@ router.route("/add").post((req, res) => {
     shipper,
     user,
     customer,
+    insuranceCost,
+    shippingCost,
+    agentPayment,
+    auctionSheetid,
+    auctionSheet,
+    invoiceNumber,
+    bank,
+    bankEmail,
+    locNum,
   });
 
   newOrder
     .save()
     .then(() => res.json("Order added"))
     .catch((err) => res.status(400).json("Error:" + err));
+
+  //mail step1
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "abijanudara97@gmail.com",
+      pass: "0332256411",
+    },
+  });
+  //mail step 2
+
+  let mailOptions = {
+    from: "abijanudara97@gmail.com",
+    to: "abijanudara27759@gmail.com",
+    subject: "Testing and Testing",
+    text: "It works",
+  };
+
+  //step 3
+  transporter.sendMail(mailOptions, function (err, data) {
+    if (err) {
+      console.log("Erorr ocurs", err);
+    } else {
+      console.log("Email Sent");
+    }
+  });
 });
 
-router.route("/:id").get((req, res) => {
-  Order.findById(req, params.id)
+router.get("/:id", (req, res) => {
+  Order.findById(req.params.id)
     .then((order) => res.json(order))
-    .catch((err) => res.status(400).json("Error :" + err));
+    .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
 router.route("/:id").delete((req, res) => {
@@ -54,6 +114,9 @@ router.route("/update/:id").post((req, res) => {
       order.shipper = req.body.shipper;
       (order.user = req.body), user;
       order.customer = req.body.customer;
+      order.insurancecost = req.body.insurancecost;
+      order.shippingcost = req.body.shippingcost;
+      order.agentpayment = req.body.agentpayment;
 
       order
         .save()
@@ -62,5 +125,7 @@ router.route("/update/:id").post((req, res) => {
     })
     .catch((err) => res.status(400).json("Error " + err));
 });
+
+//nodemailer
 
 module.exports = router;

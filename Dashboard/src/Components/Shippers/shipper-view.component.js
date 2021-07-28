@@ -96,7 +96,7 @@ export default function ShipperCard() {
     <React.Fragment>
       <CssBaseline />
 
-      <div className={classes.heroContent}>
+      <div className={classes.heroContent} style={{backgroundColor:"#050f2c"}}>
         <Container maxWidth="sm">
           <Typography
             component="h1"
@@ -104,16 +104,9 @@ export default function ShipperCard() {
             align="center"
             color="textPrimary"
             gutterBottom
+            style={{color:"#2DDDff"}}
           >
-            shippers
-          </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            you can add, view, delete shippers from here.
+            Shippers
           </Typography>
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
@@ -142,7 +135,7 @@ export default function ShipperCard() {
                         <div className="container border border-primary rounded pb-5 pt-5 mt-2 mb-2">
                           <div>
                             <h4 className="bg-primary text-white p-2 mb-3">
-                              ADD AGENT
+                              ADD SHIPPER
                             </h4>
                           </div>
                           <div className="col-9">
@@ -163,7 +156,7 @@ export default function ShipperCard() {
         <Grid container spacing={4}>
           {!shippers.length ? (
             <div className={classes.root}>
-              <LinearProgress color="secondary" />
+              <LinearProgress color="primary" />
             </div>
           ) : (
             shippers.map((shipper, key) => (

@@ -7,7 +7,7 @@ function RenderMenuItem({ dish }) {
       <CardImg width="100%" src={dish.image} alt={dish.name} />
       <CardBody>
         <CardTitle>{dish.name}</CardTitle>
-        <CardText>{`price : ${dish.price}`}</CardText>
+        <CardText>{`Description : ${dish.description}`}</CardText>
       </CardBody>
     </Card>
   );

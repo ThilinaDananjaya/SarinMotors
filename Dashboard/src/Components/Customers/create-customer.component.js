@@ -41,7 +41,7 @@ const CreateCustomer = () => {
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Agent Saved",
+      title: "Customer Saved",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -56,7 +56,7 @@ const CreateCustomer = () => {
   return (
     <form onSubmit={changeonClick} encType="multipart/form-data">
       <div className="form-group mb-3">
-        <label>Agent ID : </label>
+        <label>Customer Name : </label>
         <input
           type="text"
           required
@@ -67,7 +67,7 @@ const CreateCustomer = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Password : </label>
+        <label>Customer NIC No : </label>
         <input
           type="text"
           required
@@ -78,7 +78,7 @@ const CreateCustomer = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Email </label>
+        <label>Email : </label>
         <input
           type="text"
           required
@@ -89,7 +89,7 @@ const CreateCustomer = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Mobile </label>
+        <label>Mobile : </label>
         <input
           type="text"
           required

@@ -9,6 +9,10 @@ router.route("/").get((req, res) => {
 
 router.route("/add").post((req, res) => {
   const orderId = req.body.orderId;
+  const lc = req.body.lc;
+  const invoice = req.body.invoice;
+  const taxpayment = Number(req.body.taxpayment);
+  const commision = Number(req.body.commision);
   const customPayment = Number(req.body.customPayment);
   const transportPayment = Number(req.body.transportPayment);
   const user = req.body.user;
@@ -16,6 +20,10 @@ router.route("/add").post((req, res) => {
 
   const newCustomClearance = new CustomClearance({
     orderId,
+    lc,
+    invoice,
+    taxpayment,
+    commision,
     customPayment,
     transportPayment,
     user,
@@ -44,8 +52,13 @@ router.route("/update/:id").post((req, res) => {
   CustomClearance.findById(req, params.id)
     .then((customclearance) => {
       customclearance.orderId = req.body.orderId;
+      customclearance.lc = req.body.lc;
+      customclearance.invoice = req.body.invoice;
       customclearance.customPayment = Number(req.body.customPayment);
-      customclearance.transportPayment = req.body.transportPayment;
+      customclearance.transportPayment = Number(req.body.transportPayment);
+      //check the transport payment again
+      customclearance.commision = Number(req.body.commision);
+      customclearance.taxpayment = Number(req.body.taxpayment);
       (customclearance.user = req.body), user;
       customclearance.date = Date.parse(req.body.date);
 

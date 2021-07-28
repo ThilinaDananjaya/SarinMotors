@@ -8,29 +8,30 @@ import {
   Media,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import UserCard from "../shared/leaders"
 
 function About(props) {
-  const leaders = props.leaders.map((leader) => {
-    return (
-      <div key={leader.id} className="col-12 mt-5">
-        <Media tag="li">
-          <Media left middle>
-            <Media
-              className="img-fluid"
-              object
-              src={leader.image}
-              alt={leader.name}
-            />
-          </Media>
-          <Media body className="ml-5">
-            <Media heading>{leader.name}</Media>
-            <Media subheading>{leader.designation}</Media>
-            <p>{leader.description}</p>
-          </Media>
-        </Media>
-      </div>
-    );
-  });
+//   const leaders = props.leaders.map((leader) => {
+//     return (
+//       <div key={leader.id} className="col-12 mt-5">
+//         <Media tag="li">
+//           <Media left middle>
+//             <Media
+//               className="img-fluid"
+//               object
+//               src={leader.image}
+//               alt={leader.name}
+//             />
+//           </Media>
+//           <Media body className="ml-5">
+//             <Media heading>{leader.name}</Media>
+//             <Media subheading>{leader.designation}</Media>
+//             <p>{leader.description}</p>
+//           </Media>
+//         </Media>
+//       </div>
+//     );
+//   });
 
   return (
     <div className="container">
@@ -115,7 +116,8 @@ function About(props) {
           <h2>Corporate Leadership</h2>
         </div>
         <div className="col-12">
-          <Media list>{leaders}</Media>
+         <UserCard/>
+          {/* <Media list>{leaders}</Media> */}
         </div>
       </div>
     </div>

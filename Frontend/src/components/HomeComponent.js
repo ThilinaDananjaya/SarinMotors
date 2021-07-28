@@ -57,7 +57,7 @@ function Home(props) {
           <div class="carousel-item">
             <img
               class="d-block w-100"
-              src="\assets\cars\YTB800-2-902x675.jpg"
+              src="\assets\cars\2022-audi-a4-mmp-1-1621027611.jpg"
               height="400"
               alt="Second slide"
             ></img>
@@ -65,8 +65,26 @@ function Home(props) {
           <div class="carousel-item">
             <img
               class="d-block w-100"
+              src="\assets\cars\bmw5.jpg"
+              height="400"
+              alt="Second slide"
+            ></img>
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              src="\assets\cars\chr.jpg"
+              height="400"
+              alt="Second slide"
+            ></img>
+          </div>
+          <div class="carousel-item">
+            <img
+              className="d-block w-100"
               src="\assets\cars\71eXBBYjImL._AC_SY450_.jpg"
               height="350"
+              display="flex"
+              width="10"
               alt="Third slide"
             ></img>
           </div>

@@ -12,6 +12,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Swal from "sweetalert2";
 import axios from "axios";
 import CreateOrders from "./create-order.component";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import { Link } from "react-router-dom";
 // import LinearProgress from '@material-ui/core/LinearProgress';
 // import { Link } from 'react-router-dom';
@@ -97,7 +98,10 @@ export default function OrderCard() {
     <React.Fragment>
       <CssBaseline />
 
-      <div className={classes.heroContent}>
+      <div
+        className={classes.heroContent}
+        style={{ backgroundColor: "#050f2c" }}
+      >
         <Container maxWidth="sm">
           <Typography
             component="h1"
@@ -105,16 +109,9 @@ export default function OrderCard() {
             align="center"
             color="textPrimary"
             gutterBottom
+            style={{ color: "#2DDDff" }}
           >
             Orders
-          </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            you can add, view, delete Orders from here.
           </Typography>
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
@@ -160,290 +157,296 @@ export default function OrderCard() {
         </Container>
       </div>
 
-      <div className="row mt-5">
-        <div className={classes.root}>
-          {orders.map((order, key) => (
-            <Accordion key={key}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography className={classes.heading}>
-                  Order ID : {order.orderId}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <div className="container">
-                  <form encType="multipart/form-data">
-                    <div className="form-row">
-                      <div className="row">
-                        <div className="col-6 mb-3">
-                          <label>Order ID </label>
-                          <input
-                            disabled
-                            placeholder={order.orderId}
-                            type="text"
-                            className="form-control"
-                          />
-                        </div>
-
-                        <div className="col-6 mb-3">
-                          <label>Date: </label>
-                          <input
-                            disabled
-                            placeholder={order.date}
-                            type="text"
-                            className="form-control"
-                          />
-                          <div></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="form-group ">
-                      <div className="row">
-                        <div className="col-6 mb-3">
-                          <label htmlFor="pay" className="">
-                            Payment
-                          </label>
-                          <div className="input-group">
-                            <div className="input-group-prepend">
-                              <div className="input-group-text">Rs.</div>
-                            </div>
+      <Container className={classes.cardGrid} maxWidth="md">
+        <Grid container spacing={4}>
+          {!orders.length ? (
+            <div className={classes.root}>
+              <LinearProgress color="primary" />
+            </div>
+          ) : (
+            orders.map((order, key) => (
+              <Accordion key={key}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography className={classes.heading}>
+                    Order ID : {order.orderId}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <div className="container">
+                    <form encType="multipart/form-data">
+                      <div className="form-row">
+                        <div className="row">
+                          <div className="col-6 mb-3">
+                            <label>Order ID </label>
                             <input
-                              type="text"
                               disabled
-                              placeholder={order.payment}
-                              id="pay"
+                              placeholder={order.orderId}
+                              type="text"
                               className="form-control"
                             />
                           </div>
-                        </div>
-                        <div className="col-6 mb-3">
-                          <label htmlFor="insurancepay" className="">
-                            Insurance Payment
-                          </label>
-                          <div className="input-group">
-                            <div className="input-group-prepend">
-                              <div className="input-group-text">Rs.</div>
-                            </div>
+
+                          <div className="col-6 mb-3">
+                            <label>Date: </label>
                             <input
-                              type="text"
-                              id="insurancepay"
-                              className="form-control"
-                              placeholder={order.insuranceCost}
                               disabled
+                              placeholder={order.date}
+                              type="text"
+                              className="form-control"
                             />
+                            <div></div>
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="form-group ">
-                      <div className="row">
-                        <div className="col-6 mb-3">
-                          <label>Agent </label>
-                          <input
-                            type="text"
-                            placeholder={order.agent}
-                            className="form-control"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="col-6 mb-3">
-                          <label htmlFor="agentpay" className="">
-                            Agent Payment
-                          </label>
-                          <div className="input-group">
-                            <div className="input-group-prepend">
-                              <div className="input-group-text">Rs.</div>
+                      <div className="form-group ">
+                        <div className="row">
+                          <div className="col-6 mb-3">
+                            <label htmlFor="pay" className="">
+                              Payment
+                            </label>
+                            <div className="input-group">
+                              <div className="input-group-prepend">
+                                <div className="input-group-text">Rs.</div>
+                              </div>
+                              <input
+                                type="text"
+                                disabled
+                                placeholder={order.payment}
+                                id="pay"
+                                className="form-control"
+                              />
                             </div>
+                          </div>
+                          <div className="col-6 mb-3">
+                            <label htmlFor="insurancepay" className="">
+                              Insurance Payment
+                            </label>
+                            <div className="input-group">
+                              <div className="input-group-prepend">
+                                <div className="input-group-text">Rs.</div>
+                              </div>
+                              <input
+                                type="text"
+                                id="insurancepay"
+                                className="form-control"
+                                placeholder={order.insuranceCost}
+                                disabled
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="form-group ">
+                        <div className="row">
+                          <div className="col-6 mb-3">
+                            <label>Agent </label>
+                            <input
+                              type="text"
+                              placeholder={order.agent}
+                              className="form-control"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="col-6 mb-3">
+                            <label htmlFor="agentpay" className="">
+                              Agent Payment
+                            </label>
+                            <div className="input-group">
+                              <div className="input-group-prepend">
+                                <div className="input-group-text">Rs.</div>
+                              </div>
+                              <input
+                                type="text"
+                                id="agentpay"
+                                className="form-control"
+                                disabled
+                                placeholder={order.agentPayment}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="form-group ">
+                        <div className="row">
+                          <div className="col-6 mb-3">
+                            <label>Shipper </label>
                             <input
                               type="text"
                               id="agentpay"
                               className="form-control"
                               disabled
-                              placeholder={order.agentPayment}
+                              placeholder={order.shipper}
                             />
                           </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="form-group ">
-                      <div className="row">
-                        <div className="col-6 mb-3">
-                          <label>Shipper </label>
-                          <input
-                            type="text"
-                            id="agentpay"
-                            className="form-control"
-                            disabled
-                            placeholder={order.shipper}
-                          />
-                        </div>
-                        <div className="col-6 mb-3">
-                          <label htmlFor="shipperpay" className="">
-                            Shipping Payment
-                          </label>
-                          <div className="input-group">
-                            <div className="input-group-prepend">
-                              <div className="input-group-text">Rs.</div>
+                          <div className="col-6 mb-3">
+                            <label htmlFor="shipperpay" className="">
+                              Shipping Payment
+                            </label>
+                            <div className="input-group">
+                              <div className="input-group-prepend">
+                                <div className="input-group-text">Rs.</div>
+                              </div>
+                              <input
+                                type="text"
+                                id="shipperpay"
+                                className="form-control"
+                                placeholder={order.shippingCost}
+                                disabled
+                              />
                             </div>
-                            <input
-                              type="text"
-                              id="shipperpay"
-                              className="form-control"
-                              placeholder={order.shippingCost}
-                              disabled
-                            />
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="form-group col-6 mb-3">
-                      <label>Manager </label>
+                      <div className="form-group col-6 mb-3">
+                        <label>Manager </label>
 
-                      <input
-                        type="text"
-                        id="agentpay"
-                        className="form-control"
-                        disabled
-                        placeholder={order.user}
-                      />
-                    </div>
-
-                    <div className="form-group col-6 mb-3">
-                      <label>Customer </label>
-                      <div className="input-group">
                         <input
                           type="text"
                           id="agentpay"
                           className="form-control"
                           disabled
-                          placeholder={order.customer}
+                          placeholder={order.user}
                         />
                       </div>
-                    </div>
-                    <div className="form-group">
-                      <div className="row">
-                        <div className="col-6 mb-3">
-                          <label htmlFor="">auctionSheet id</label>
+
+                      <div className="form-group col-6 mb-3">
+                        <label>Customer </label>
+                        <div className="input-group">
                           <input
                             type="text"
-                            className="form-control"
-                            placeholder={order.auctionSheetid}
-                            disabled
-                          />
-                        </div>
-                        <div className="col-6 mb-3">
-                          <label htmlFor="">Loc Number</label>
-                          <input
-                            id=""
-                            type="text"
-                            placeholder={order.locNum}
+                            id="agentpay"
                             className="form-control"
                             disabled
+                            placeholder={order.customer}
                           />
                         </div>
                       </div>
-                      <div className="row">
-                        <Link to={`/order/${order._id}`}>
+                      <div className="form-group">
+                        <div className="row">
                           <div className="col-6 mb-3">
-                            <label>Auction Sheet </label>
+                            <label htmlFor="">auctionSheet id</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder={order.auctionSheetid}
+                              disabled
+                            />
+                          </div>
+                          <div className="col-6 mb-3">
+                            <label htmlFor="">Loc Number</label>
+                            <input
+                              id=""
+                              type="text"
+                              placeholder={order.locNum}
+                              className="form-control"
+                              disabled
+                            />
+                          </div>
+                        </div>
+                        <div className="row">
+                          <Link to={`/order/${order._id}`}>
+                            <div className="col-6 mb-3">
+                              <label>Auction Sheet </label>
+                              <img
+                                src={`/orders/${order.auctionSheet}`}
+                                alt="auctionsheet"
+                                className="img-fluid"
+                              ></img>
+                            </div>
+                          </Link>
+                          <div className="col-6 mb-3">
+                            <label>Letter of Credit </label>
                             <img
-                              src={`/orders/${order.auctionSheet}`}
-                              alt="auctionsheet"
+                              src="/orders/loc.png"
+                              alt="loc"
                               className="img-fluid"
                             ></img>
                           </div>
-                        </Link>
-                        <div className="col-6 mb-3">
-                          <label>Letter of Credit </label>
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <div className="row">
+                          <div className="col-4 mb-3">
+                            <label htmlFor="invoice">Invoice Number</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder={order.invoiceNumber}
+                              disabled
+                            />
+                          </div>
+                        </div>
+                        <div className="row col-6">
                           <img
-                            src="/orders/loc.png"
+                            src="/orders/invoice.png"
                             alt="loc"
                             className="img-fluid"
                           ></img>
                         </div>
                       </div>
-                    </div>
-                    <div className="form-group">
-                      <div className="row">
-                        <div className="col-4 mb-3">
-                          <label htmlFor="invoice">Invoice Number</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder={order.invoiceNumber}
-                            disabled
-                          />
+
+                      <div className="col-6 mb-3">
+                        <label>Bank</label>
+                        <input
+                          id=""
+                          type="text"
+                          className="form-control"
+                          placeholder={order.bank}
+                          disabled
+                        />
+                      </div>
+                      <div className="col-6 mb-3">
+                        <label>Bank Email</label>
+                        <input
+                          id=""
+                          type="text"
+                          className="form-control"
+                          placeholder={order.bankEmail}
+                          disabled
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <div className="row">
+                          <div className="col-6 mb-3">
+                            <label htmlFor="">Loc Number</label>
+                            <input
+                              id=""
+                              type="text"
+                              placeholder={order.locNum}
+                              className="form-control"
+                              disabled
+                            />
+                          </div>
                         </div>
                       </div>
-                      <div className="row col-6">
-                        <img
-                          src="/orders/invoice.png"
-                          alt="loc"
-                          className="img-fluid"
-                        ></img>
+
+                      <br></br>
+
+                      <div className="form-group mb-3">
+                        <input
+                          onClick={() => deleteOrder(order._id)}
+                          value="Delete Order"
+                          className="btn btn-warning"
+                        />
                       </div>
-                    </div>
-
-                    <div className="col-6 mb-3">
-                      <label>Bank</label>
-                      <input
-                        id=""
-                        type="text"
-                        className="form-control"
-                        placeholder={order.bank}
-                        disabled
-                      />
-                    </div>
-                    <div className="col-6 mb-3">
-                      <label>Bank Email</label>
-                      <input
-                        id=""
-                        type="text"
-                        className="form-control"
-                        placeholder={order.bankEmail}
-                        disabled
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <div className="row">
-                        <div className="col-6 mb-3">
-                          <label htmlFor="">Loc Number</label>
-                          <input
-                            id=""
-                            type="text"
-                            placeholder={order.locNum}
-                            className="form-control"
-                            disabled
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <br></br>
-
-                    <div className="form-group mb-3">
-                      <input
-                        onClick={() => deleteOrder(order._id)}
-                        value="Delete Order"
-                        className="btn btn-warning"
-                      />
-                    </div>
-                  </form>
-                </div>
-              </AccordionDetails>
-            </Accordion>
-          ))}
-        </div>
-      </div>
+                    </form>
+                  </div>
+                </AccordionDetails>
+              </Accordion>
+            ))
+          )}
+        </Grid>
+      </Container>
     </React.Fragment>
   );
 }

@@ -98,7 +98,10 @@ export default function VehicleCard() {
     <React.Fragment>
       <CssBaseline />
 
-      <div className={classes.heroContent}>
+      <div
+        className={classes.heroContent}
+        style={{ backgroundColor: "#050f2c" }}
+      >
         <Container maxWidth="sm">
           <Typography
             component="h1"
@@ -106,16 +109,9 @@ export default function VehicleCard() {
             align="center"
             color="textPrimary"
             gutterBottom
+            style={{ color: "#2DDDff" }}
           >
             Vehicles
-          </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            you can add, view, delete vehicles from here.
           </Typography>
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
@@ -165,7 +161,7 @@ export default function VehicleCard() {
         <Grid container spacing={4}>
           {!vehicles.length ? (
             <div className={classes.root}>
-              <LinearProgress color="secondary" />
+              <LinearProgress color="primary" />
             </div>
           ) : (
             vehicles.map((vehicle, key) => (
@@ -196,14 +192,14 @@ export default function VehicleCard() {
                     <Typography>Body Style : {vehicle.bodyStyle}</Typography>
 
                     <Typography>Madeyear : {vehicle.year}</Typography>
+                    <Typography>mileage : {vehicle.mileage}</Typography>
+                    <Typography>
+                      Exterior Color : {vehicle.exteriorColor}
+                    </Typography>
+                    <Typography>
+                      Interior Color : {vehicle.interiorColor}
+                    </Typography>
                   </CardContent>
-                  <Typography>mileage : {vehicle.mileage}</Typography>
-                  <Typography>
-                    Exterior Color : {vehicle.exteriorColor}
-                  </Typography>
-                  <Typography>
-                    Interier Color : {vehicle.interiorColor}
-                  </Typography>
                   <CardActions>
                     <Link
                       to={`/update/${vehicle._id}`}

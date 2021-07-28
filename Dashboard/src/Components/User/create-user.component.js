@@ -67,7 +67,7 @@ const CreateEmployee = () => {
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Agent Saved",
+      title: "Employee Saved",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -84,7 +84,7 @@ const CreateEmployee = () => {
   return (
     <form onSubmit={changeonClick} encType="multipart/form-data">
       <div className="form-group mb-3">
-        <label>User Name </label>
+        <label>Full Name</label>
         <input
           type="text"
           required
@@ -95,7 +95,7 @@ const CreateEmployee = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Password : </label>
+        <label>NIC No</label>
         <input
           type="text"
           required
@@ -106,9 +106,9 @@ const CreateEmployee = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Email </label>
+        <label>Email</label>
         <input
-          type="text"
+          type="email"
           required
           className="form-control"
           value={email}
@@ -117,7 +117,7 @@ const CreateEmployee = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Mobile </label>
+        <label>Mobile Number</label>
         <input
           type="text"
           required
@@ -128,7 +128,17 @@ const CreateEmployee = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Address </label>
+        <label>Phone Number (Home)</label>
+        <input
+          type="text"
+          className="form-control"
+          value={homePhone}
+          onChange={(e) => setHomephone(e.target.value)}
+        />
+      </div>
+
+      <div className="form-group mb-3">
+        <label>Address</label>
         <input
           type="text"
           required
@@ -139,18 +149,7 @@ const CreateEmployee = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Homephone </label>
-        <input
-          type="text"
-          required
-          className="form-control"
-          value={homePhone}
-          onChange={(e) => setHomephone(e.target.value)}
-        />
-      </div>
-
-      <div className="form-group mb-3">
-        <label>Married Status </label>
+        <label>Marital Status </label>
         <Select
           className="form-control"
           value={marriedState}
@@ -178,7 +177,7 @@ const CreateEmployee = () => {
         </div>
       </div>
 
-      <div className="form-group mb-3">
+      {/* <div className="form-group mb-3">
         <label>Employee Type </label>
         <Select
           value={empType}
@@ -189,7 +188,7 @@ const CreateEmployee = () => {
           <option value="Part Time">Part time</option>
           <option value="Intern">Intern</option>
         </Select>
-      </div>
+      </div> */}
       <div className="form-group mb-3">
         <input
           type="radio"
@@ -199,7 +198,7 @@ const CreateEmployee = () => {
           onChange={handleChange}
           name="gender"
         />
-        <label for="male">Male</label>
+        <label for="male">&nbsp;&nbsp;Male&nbsp;&nbsp;&nbsp;&nbsp;</label>
 
         <input
           type="radio"
@@ -209,11 +208,11 @@ const CreateEmployee = () => {
           onChange={handleChange}
           name="gender"
         />
-        <label for="female">Female</label>
+        <label for="female">&nbsp;&nbsp;Female</label>
       </div>
 
       <div className="form-group mb-3">
-        <label>bank </label>
+        <label>Bank</label>
         <input
           type="text"
           required
@@ -224,7 +223,7 @@ const CreateEmployee = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Account No </label>
+        <label>Account No</label>
         <input
           type="text"
           required
@@ -235,7 +234,7 @@ const CreateEmployee = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>Position </label>
+        <label>Position</label>
         <Select
           className="form-control"
           value={position}
@@ -247,7 +246,7 @@ const CreateEmployee = () => {
       </div>
 
       <div className="form-group mb-3">
-        <label>qualifications </label>
+        <label>Qualifications </label>
         <textarea
           className="form-control"
           value={qualification}

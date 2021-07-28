@@ -95,7 +95,7 @@ export default function CustomerCard() {
     <React.Fragment>
       <CssBaseline />
 
-      <div className={classes.heroContent}>
+      <div className={classes.heroContent} style={{backgroundColor:"#050f2c"}}>
         <Container maxWidth="sm">
           <Typography
             component="h1"
@@ -103,16 +103,9 @@ export default function CustomerCard() {
             align="center"
             color="textPrimary"
             gutterBottom
+            style={{color:"#2DDDff"}}
           >
             Customers
-          </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            you can add, view, delete customers from here.
           </Typography>
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
@@ -162,7 +155,7 @@ export default function CustomerCard() {
         <Grid container spacing={4}>
           {!customers.length ? (
             <div className={classes.root}>
-              <LinearProgress color="secondary" />
+              <LinearProgress color="primary" />
             </div>
           ) : (
             customers.map((customer, key) => (
@@ -187,7 +180,7 @@ export default function CustomerCard() {
                       {customer.email}
                     </Typography>
                     <Typography>{customer.mobile}</Typography>
-                    <Typography>{customer.dob}</Typography>
+                    <Typography>{customer.password}</Typography>
                   </CardContent>
                   <CardActions>
                     <Link

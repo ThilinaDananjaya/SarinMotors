@@ -9,6 +9,7 @@ const customerSchema = new Schema(
     email: { type: String, required: true },
     mobile: { type: Number, required: true },
     dob: { type: Date, required: true },
+    customerImage: { type: String, required: true },
   },
   {
     timestamps: true,
