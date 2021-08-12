@@ -54,5 +54,5 @@ app.use("/machines", MachinesRouter);
 app.use("/sales", SalesRouter);
 
 app.listen(port, () => {
-  console.log(`Server is start at server ${port}`);
+  console.log(`Server is running on PORT ${port}`);
 });
